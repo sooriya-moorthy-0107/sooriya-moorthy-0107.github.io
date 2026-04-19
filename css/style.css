@@ -633,7 +633,7 @@ ul {
     right: -100%;
     top: 70px;
     flex-direction: column;
-    background: var(--surface-color);
+    background: rgba(13, 17, 23, 0.95);
     backdrop-filter: blur(15px);
     width: 100%;
     text-align: center;
