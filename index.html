@@ -46,25 +46,37 @@
     <header class="hero" id="hero">
         <div class="hero-container container">
             <div class="hero-text fade-in">
-                <h1>SOORIYA MOORTHY</h1>
-                <p class="subtitle">Software Engineer & Project Manager | Bridging Technical Execution with Product
-                    Strategy</p>
-                <div class="btn-group">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="assets/Resume.pdf?v=2" target="_blank" class="btn btn-secondary">Download Resume</a>
+                <h1>
+                    <span>Sooriya</span>
+                    <span>Moorthy</span>
+                </h1>
+                <p class="subtitle" style="margin-top: 2rem;">
+                    Software Engineer & Project Manager | Bridging Technical Execution with Product Strategy.
+                </p>
+                <div class="btn-group" style="margin-top: 2rem;">
+                    <a href="#projects" class="btn btn-primary">My projects <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="hero-image fade-in-right">
-                <div class="image-wrapper">
-                    <img src="assets/images/my_photo.jpg" alt="Sooriya Moorthy R - Headshot" class="duotone-filter">
-                    <div class="glow-effect"></div>
+
+            <div class="image-wrapper fade-in" style="z-index: -1;">
+                <img src="assets/images/my_photo_transparent.png" alt="Sooriya Moorthy" class="cutout-photo">
+            </div>
+
+            <div class="hero-stats fade-in-right">
+                <div class="stat-item">
+                    <span class="label">Education</span>
+                    <p>8.3 CGPA</p>
+                    <p style="font-size:0.8rem; color:var(--text-muted)">Vellore Institute of Technology</p>
+                </div>
+                <div class="stat-item" style="margin-top: 8rem;">
+                    <p style="font-size: 1.4rem; font-style: italic; line-height: 1.6;">"You can't use up creativity, the more you use, the more you have in your significant mind."</p>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- About Me Section -->
-    <section class="about section" id="about">
+    <section class="about section" id="about" style="background-color: #1a1a24; margin-top: -120px; padding-top: 160px; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.05); box-shadow: 0 -20px 40px rgba(0,0,0,0.3);">
         <div class="container">
             <h2 class="section-heading fade-in">About Me</h2>
             <div class="about-grid">
@@ -83,10 +95,8 @@
                         and its accompanying music.</p>
                 </div>
                 <div class="about-image fade-in-right">
-                    <div class="image-wrapper">
-                        <img src="assets/images/workstation_candid_1776528868544.png" alt="Workstation Candid"
-                            class="duotone-filter">
-                    </div>
+                    <img src="assets/images/workstation_candid_1776528868544.png" alt="Workstation Candid"
+                        class="cutout-photo workstation-img">
                 </div>
             </div>
         </div>
@@ -217,10 +227,11 @@
                 <div class="project-card glass-card fade-in">
                     <div class="project-img">
                         <img src="assets/images/effortleap_ui_1776528887944.png" alt="EffortLeap Dashboard"
-                            class="duotone-filter">
+                            class="cutout-photo">
                     </div>
                     <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/EffortLeap" target="_blank">EffortLeap - Predictive Software Effort Estimation Tool</a></h3>
+                        <h3><a href="https://github.com/sooriya-moorthy-0107/EffortLeap" target="_blank">EffortLeap -
+                                Predictive Software Effort Estimation Tool</a></h3>
                         <p>Developed a web-based tool using TypeScript and statistical modeling to predict task
                             durations and software effort. Applied SPM principles to enhance planning accuracy by 20%
                             through systematic estimation and risk mitigation.</p>
@@ -237,7 +248,7 @@
                 <div class="project-card glass-card fade-in">
                     <div class="project-img">
                         <img src="assets/images/billing_system_ui_1776528904275.png"
-                            alt="Ponnangai Enterprises Billing Software" class="duotone-filter">
+                            alt="Ponnangai Enterprises Billing Software" class="cutout-photo">
                     </div>
                     <div class="project-info">
                         <h3>Ponnangai Enterprises Billing Software <span class="dev-status">(Under Dev)</span></h3>
@@ -257,10 +268,11 @@
                 <div class="project-card glass-card fade-in">
                     <div class="project-img">
                         <img src="assets/images/ai_simulator_cli_1776528925052.png" alt="Digital Fugitive AI Simulator"
-                            class="duotone-filter">
+                            class="cutout-photo">
                     </div>
                     <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/Digital-Fugitive-AI-Police-Surveillance" target="_blank">Digital Fugitive - AI Search Paradigm Simulator</a></h3>
+                        <h3><a href="https://github.com/sooriya-moorthy-0107/Digital-Fugitive-AI-Police-Surveillance"
+                                target="_blank">Digital Fugitive - AI Search Paradigm Simulator</a></h3>
                         <p>Built a Python-based simulator implementing stochastic search and knowledge-based agents
                             using Manhattan distance heuristics. Documented comprehensive system architecture, including
                             detailed flowcharts and technical specifications.</p>
@@ -277,7 +289,7 @@
                 <div class="project-card glass-card fade-in">
                     <div class="project-img">
                         <img src="assets/images/cicd_pipeline_diagram_1776528945442.png" alt="CI/CD Pipeline"
-                            class="duotone-filter">
+                            class="cutout-photo">
                     </div>
                     <div class="project-info">
                         <h3>CI/CD Pipeline & Kubernetes Deployment</h3>
@@ -365,7 +377,8 @@
                         <img src="assets/images/web_js.png" alt="Web JS Preview" class="duotone-filter">
                     </div>
                     <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/Digital-Detox-Analyzer" target="_blank">Digital-Detox-Analyzer</a></h3>
+                        <h3><a href="https://github.com/sooriya-moorthy-0107/Digital-Detox-Analyzer"
+                                target="_blank">Digital-Detox-Analyzer</a></h3>
                         <p>A JavaScript project.</p>
                         <div class="tags"><span class="tag">JavaScript</span></div>
                     </div>
