@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sooriya-moorthy-0107.github.io/sitemap.xml
