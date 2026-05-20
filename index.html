@@ -1,417 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOORIYA MOORTHY | Software Engineer & Project Manager</title>
-    <meta name="description"
-        content="Portfolio of Sooriya Moorthy R, analytical 3rd-year Software Engineering student focused on bridging the gap between technical execution and product strategy.">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="Portfolio of Sooriya Moorthy, a Software Engineering student at VIT specializing in full-stack development, blockchain, and IoT.">
-
-    <meta property="og:title" content="Sooriya Moorthy | Software Engineer">
-    <meta property="og:description" content="Portfolio of Sooriya Moorthy, a Software Engineering student at VIT specializing in full-stack development, blockchain, and IoT.">
-    <meta property="og:url" content="https://sooriya-moorthy-0107.github.io/">
-    <meta property="og:type" content="website">
-    <meta name="google-site-verification" content="8_3H8G-2NArM8EtR4mQT3f64l6rSEzOIm_hMRrxOXNI" />
-
-  <link rel="canonical" href="https://sooriya-moorthy-0107.github.io/">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Sooriya Moorthy | Portfolio</title>
+    <meta name="description" content="Portfolio of Sooriya Moorthy R, analytical 3rd-year Software Engineering student focused on bridging the gap between technical execution and product strategy.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=JetBrains+Mono:wght@600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "tertiary-container": "#5d6872",
+              "on-secondary-container": "#004b76",
+              "secondary-fixed": "#cde5ff",
+              "on-tertiary-fixed": "#121d25",
+              "on-primary-container": "#dbe6ff",
+              "on-tertiary-container": "#dce7f3",
+              "inverse-on-surface": "#f2f0f0",
+              "secondary": "#006399",
+              "surface-variant": "#e4e2e2",
+              "surface-dim": "#dbdad9",
+              "primary-container": "#0a66c2",
+              "tertiary-fixed-dim": "#bdc8d3",
+              "secondary-fixed-dim": "#95ccff",
+              "on-primary-fixed": "#001b3d",
+              "surface-container-high": "#e9e8e7",
+              "slate-dark": "#1D2226",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#fbf9f8",
+              "on-secondary-fixed": "#001d32",
+              "surface-tint": "#005eb5",
+              "inverse-primary": "#a8c8ff",
+              "primary-fixed": "#d6e3ff",
+              "on-error-container": "#93000a",
+              "on-surface": "#1b1c1c",
+              "on-background": "#1b1c1c",
+              "inverse-surface": "#303031",
+              "on-surface-variant": "#414752",
+              "surface-container": "#efeded",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e4e2e2",
+              "outline-variant": "#c1c6d4",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#00468a",
+              "border-subtle": "#EBEBEB",
+              "primary-fixed-dim": "#a8c8ff",
+              "secondary-container": "#6dbdff",
+              "slate-mid": "#F3F2EF",
+              "primary": "#004e99",
+              "surface": "#fbf9f8",
+              "on-tertiary-fixed-variant": "#3d4851",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#004a75",
+              "success-green": "#057642",
+              "background": "#fbf9f8",
+              "outline": "#727783",
+              "surface-container-low": "#f5f3f3",
+              "on-error": "#ffffff",
+              "tertiary": "#45505a",
+              "tertiary-fixed": "#d9e4f0",
+              "error": "#ba1a1a"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.125rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "full": "0.75rem"
+            },
+            "spacing": {
+              "section-gap": "48px",
+              "container-max": "1128px",
+              "gutter": "24px",
+              "unit": "8px",
+              "margin-mobile": "16px"
+            },
+            "fontFamily": {
+              "body-lg": ["Inter"],
+              "headline-md": ["Manrope"],
+              "label-caps": ["JetBrains Mono"],
+              "headline-lg": ["Manrope"],
+              "body-md": ["Inter"],
+              "headline-lg-mobile": ["Manrope"],
+              "display": ["Manrope"]
+            },
+            "fontSize": {
+              "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+              "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+              "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+              "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+              "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+              "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+              "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F3F2EF; /* slate-mid from system */
+        }
+        .tonal-card {
+            background-color: #ffffff;
+            border: 1px solid #EBEBEB;
+            transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .tonal-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
-
-<body>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="brand-logo">SOORIYA MOORTHY</a>
-
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<body class="font-body-md text-on-surface antialiased">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto bg-surface-container-lowest border-b border-border-subtle left-1/2 -translate-x-1/2">
+        <div class="font-headline-md text-headline-md font-bold text-primary">Sooriya Moorthy</div>
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="index.html">Home</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="about.html">About</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="projects.html">Projects</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="contact.html">Contact</a>
+            <a href="assets/Resume.pdf?v=2" target="_blank" class="bg-primary text-on-primary px-6 py-2 rounded-lg font-body-md text-body-md hover:brightness-90 transition-all active:opacity-80 active:scale-95 flex items-center justify-center">Download CV</a>
         </div>
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-toggle-btn" class="md:hidden flex items-center p-2 focus:outline-none" aria-label="Toggle Menu">
+            <span class="material-symbols-outlined text-primary text-3xl">menu</span>
+        </button>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero" id="hero">
-        <div class="hero-container container">
-            <div class="hero-text fade-in">
-                <h1>SOORIYA MOORTHY</h1>
-                <p class="subtitle">Software Engineer & Project Manager | Bridging Technical Execution with Product
-                    Strategy</p>
-                <div class="btn-group">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="assets/Resume.pdf?v=2" target="_blank" class="btn btn-secondary">Download Resume</a>
-                </div>
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 bg-black/40 hidden transition-opacity duration-300 opacity-0">
+        <div class="fixed right-0 top-0 bottom-0 w-64 bg-surface-container-lowest p-6 flex flex-col gap-6 shadow-2xl transition-transform duration-300 translate-x-full" id="mobile-drawer-content">
+            <div class="flex justify-between items-center">
+                <span class="font-headline-md text-headline-md font-bold text-primary">Navigation</span>
+                <button id="close-menu-btn" class="p-1 focus:outline-none" aria-label="Close Menu">
+                    <span class="material-symbols-outlined text-primary text-2xl">close</span>
+                </button>
             </div>
-            <div class="hero-image fade-in-right">
-                <div class="image-wrapper">
-                    <img src="assets/images/my_photo.jpg" alt="Sooriya Moorthy R - Headshot" class="duotone-filter">
-                    <div class="glow-effect"></div>
-                </div>
+            <div class="flex flex-col gap-5 font-body-md text-body-md mt-4">
+                <a class="text-primary font-bold border-l-4 border-primary pl-3 py-1" href="index.html">Home</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors pl-3 py-1" href="about.html">About</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors pl-3 py-1" href="projects.html">Projects</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors pl-3 py-1" href="contact.html">Contact</a>
+                <a href="assets/Resume.pdf?v=2" target="_blank" class="bg-primary text-on-primary px-6 py-3 rounded-lg text-center font-body-md hover:brightness-90 transition-all mt-4 flex items-center justify-center">Download CV</a>
             </div>
         </div>
-    </header>
+    </div>
 
-    <!-- About Me Section -->
-    <section class="about section" id="about">
-        <div class="container">
-            <h2 class="section-heading fade-in">About Me</h2>
-            <div class="about-grid">
-                <div class="about-content fade-in-left">
-                    <p class="paragraph">I am an analytical 3rd-year Integrated M.Tech Software Engineering student at
-                        Vellore Institute of Technology (VIT), maintaining an 8.3 CGPA. My focus lies at the
-                        intersection of technical execution and product strategy, specializing in Software Quality
-                        Assurance, Requirement Analysis, and Project Management. I thrive in high-pressure environments,
-                        whether that involves architecting full-stack web applications or coordinating large-scale
-                        campus initiatives. I will be completing my final assessment tests shortly and am actively
-                        seeking software engineering and research internship opportunities starting from May 10, 2026.
-                    </p>
-                    <p class="paragraph">Beyond writing code and mapping system architectures, I am deeply interested in
-                        analyzing hardware performance specifications and exploring complex environments in simulation
-                        games. Off-screen, I draw creative inspiration from the coastal and ocean themes of Tamil cinema
-                        and its accompanying music.</p>
+    <!-- Main Content Canvas -->
+    <main class="mt-16 max-w-container-max mx-auto px-margin-mobile md:px-gutter pb-section-gap">
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-gutter py-section-gap items-center">
+            <div class="md:col-span-8 space-y-6">
+                <div class="inline-block bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-sm font-label-caps text-label-caps uppercase tracking-wide">
+                    3rd Year Integrated M.Tech Student @ VIT
                 </div>
-                <div class="about-image fade-in-right">
-                    <div class="image-wrapper">
-                        <img src="assets/images/workstation_candid_1776528868544.png" alt="Workstation Candid"
-                            class="duotone-filter">
-                    </div>
+                <h1 class="font-display text-display text-primary leading-tight">
+                    Hello, I'm Sooriya Moorthy
+                </h1>
+                <p class="font-headline-md text-headline-md text-on-surface-variant max-w-2xl">Specializing in Software Quality Assurance and Project Management at VIT. I combine technical rigor with leadership to build high-quality digital solutions.</p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="projects.html" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-body-lg text-body-lg font-medium hover:brightness-95 transition-all text-center flex items-center justify-center shadow-sm">
+                        View Portfolio
+                    </a>
+                    <a href="contact.html" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-body-lg text-body-lg font-medium hover:bg-slate-mid transition-all text-center flex items-center justify-center">
+                        Get In Touch
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Leadership & Experience Section -->
-    <section class="experience section bg-alt" id="experience">
-        <div class="container">
-            <h2 class="section-heading fade-in">Leadership & Experience</h2>
-            <div class="timeline">
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <img src="assets/images/my_photo.jpg" alt="VIT Radio" class="role-img">
-                            <h3>Vice Chairperson <span class="highlight">| VIT Community Radio</span></h3>
-                        </div>
-                        <p>Lead executive operations and content strategy, coordinating student teams for campus-wide
-                            broadcasting. Managed logistics for 5+ major campus events, ensuring process transparency
-                            and strict quality standards.</p>
-                    </div>
+            <div class="md:col-span-4 mt-8 md:mt-0">
+                <div class="relative aspect-[4/5] rounded-xl overflow-hidden border-4 border-white shadow-xl bg-surface-container">
+                    <img alt="Sooriya Moorthy Profile" class="w-full h-full object-cover" src="assets/images/my_photo.jpg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none"></div>
                 </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <img src="assets/images/my_photo.jpg" alt="Riviera '26" class="role-img">
-                            <h3>Coordinator <span class="highlight">| Documentation Committee, Riviera '26</span></h3>
-                        </div>
-                        <p>Streamlined the documentation process and managed all technical and non-technical content
-                            delivery for the event. Collaborated across various committees to ensure high-quality,
-                            consistent, and accurate project documentation and technical specifications.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <img src="assets/images/my_photo.jpg" alt="GraVITas '25" class="role-img">
-                            <h3>Outreach & Broadcasting Coordinator <span class="highlight">| GraVITas '25, VIT</span>
-                            </h3>
-                        </div>
-                        <p>Managed outreach campaigns and real-time communication schedules for VIT's annual technical
-                            festival. Collaborated with developers and project leads to resolve logistical bottlenecks
-                            across technical and non-technical teams.</p>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Technical Skills & Accomplishments Section -->
-    <section class="skills section bg-alt" id="skills">
-        <div class="container">
-            <h2 class="section-heading fade-in">Skills & Accomplishments</h2>
-            <div class="skills-wrapper">
-
-                <div class="skills-categories glass-card fade-in-left">
-                    <h3>Technical Skills</h3>
-                    <div class="skill-category">
-                        <h4>Programming</h4>
-                        <p>Python, Java, C++, SQL, TypeScript, HTML</p>
+        <!-- Bento Grid / Quick Look Section -->
+        <section class="mt-12">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="font-headline-lg text-headline-lg md:text-headline-lg text-on-surface">Quick Look</h2>
+                <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Snapshot of Impact</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- Skillset Card -->
+                <div class="tonal-card p-6 rounded-lg flex flex-col justify-between md:col-span-4">
+                    <div>
+                        <span class="material-symbols-outlined text-primary mb-4" style="font-size: 32px;">verified_user</span>
+                        <h3 class="font-headline-md text-headline-md mb-2">Technical Core</h3>
+                        <p class="text-on-surface-variant mb-6">Focused on building robust systems through QA automation and agile management methodologies.</p>
                     </div>
-                    <div class="skill-category">
-                        <h4>Testing & QA</h4>
-                        <p>Manual Testing, Functional Testing, Test Case Design, End-to-End (E2E) Testing (Cypress)</p>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Product & Project Mgmt</h4>
-                        <p>Software Project Management (SPM), User Experience (UX) Journey Mapping, System Architecture,
-                            Technical Writing</p>
-                    </div>
-                    <div class="skill-category">
-                        <h4>DevOps & Tools</h4>
-                        <p>Jenkins, Docker, Kubernetes, Git/SCM, MS-Excel</p>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Web Development</h4>
-                        <p>React.js, Next.js, Backend Development</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-mid text-slate-dark font-label-caps text-label-caps px-3 py-1 rounded-sm">QA AUTOMATION</span>
+                        <span class="bg-slate-mid text-slate-dark font-label-caps text-label-caps px-3 py-1 rounded-sm">AGILE/SCRUM</span>
+                        <span class="bg-slate-mid text-slate-dark font-label-caps text-label-caps px-3 py-1 rounded-sm">SELENIUM</span>
+                        <span class="bg-slate-mid text-slate-dark font-label-caps text-label-caps px-3 py-1 rounded-sm">JIRA</span>
+                        <span class="bg-slate-mid text-slate-dark font-label-caps text-label-caps px-3 py-1 rounded-sm">SQL</span>
                     </div>
                 </div>
 
-                <div class="accomplishments-container glass-card fade-in-right">
-                    <h3>Accomplishments</h3>
-                    <ul class="accomplishments-list">
-                        <li>
-                            <i class="fa-solid fa-trophy highlight-icon"></i>
-                            <div>
-                                <h4>InnovAct-2025 Hackathon</h4>
-                                <p>Contributed to innovative technical solutions for World Entrepreneurship Day
-                                    organized by the Institution's Innovation Council (IIC) at VIT.</p>
+                <!-- Featured Role/Project Card -->
+                <div class="tonal-card p-0 overflow-hidden rounded-lg group md:col-span-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+                        <div class="p-6 flex flex-col justify-center">
+                            <span class="text-success-green font-label-caps text-label-caps mb-2">LEADERSHIP ROLE</span>
+                            <h3 class="font-headline-md text-headline-md mb-3">Advisory Member</h3>
+                            <p class="text-on-surface-variant text-body-md mb-6">Providing strategic guidance and mentorship to the VIT Community Radio team to ensure sustained impact and operational excellence.</p>
+                            <a class="text-primary font-bold flex items-center gap-2 group-hover:gap-3 transition-all" href="about.html">
+                                See Experience <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                        </div>
+                        <div class="relative min-h-[200px] bg-slate-mid">
+                            <div class="absolute inset-0 flex items-center justify-center bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined" style="font-size: 64px;">support_agent</span>
                             </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-chart-pie highlight-icon"></i>
-                            <div>
-                                <h4>Tata Data Visualisation Simulation</h4>
-                                <p>Completed a job simulation focused on empowering business through effective data
-                                    insights.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-leaf highlight-icon"></i>
-                            <div>
-                                <h4>Nestlé Nesternship</h4>
-                                <p>Successfully completed the internship game and earned a certificate of participation.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Philosophy Card -->
+                <div class="tonal-card p-6 rounded-lg flex items-center gap-6 md:col-span-12">
+                    <div class="bg-primary-container p-4 rounded-full flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-on-primary-container" style="font-size: 40px;">assignment_turned_in</span>
+                    </div>
+                    <div>
+                        <h4 class="font-headline-md text-headline-md">QA-First Mindset</h4>
+                        <p class="text-on-surface-variant text-body-md">My approach integrates quality assurance early in the lifecycle, ensuring software is scalable, secure, and user-ready.</p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Professional Narrative Teaser -->
+        <section class="mt-section-gap py-12 border-t border-border-subtle">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-4">
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Core Values</h2>
+                    <p class="mt-4 text-on-surface-variant text-body-md">Standards I maintain as a student leader and aspiring software professional.</p>
+                </div>
+                <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-primary">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="font-bold">Quality First</span>
+                        </div>
+                        <p class="text-on-surface-variant">Commitment to defect-free delivery and comprehensive testing strategies.</p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-primary">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">manage_accounts</span>
+                            <span class="font-bold">Team Leadership</span>
+                        </div>
+                        <p class="text-on-surface-variant">Proven track record of managing teams and projects in academic and campus environments.</p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-primary">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+                            <span class="font-bold">Collaboration</span>
+                        </div>
+                        <p class="text-on-surface-variant">Fostering open communication to bridge technical goals with stakeholder needs.</p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-primary">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                            <span class="font-bold">Continuous Growth</span>
+                        </div>
+                        <p class="text-on-surface-variant">Consistently updating my technical toolkit with the latest industry standards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-section-gap px-gutter flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto bg-surface border-t border-border-subtle">
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+            <div class="font-headline-md text-headline-md font-bold text-primary mb-2">Sooriya Moorthy</div>
+            <p class="text-on-surface-variant font-body-md text-body-md max-w-xs md:max-w-md">© 2026 Sooriya Moorthy. All rights reserved.</p>
         </div>
-    </section>
-
-    <!-- Technical Projects Section -->
-    <section class="projects section" id="projects">
-        <div class="container">
-            <h2 class="section-heading fade-in">Academic & Technical Projects</h2>
-            <div class="projects-grid">
-
-                <!-- Project 1 -->
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/effortleap_ui_1776528887944.png" alt="EffortLeap Dashboard"
-                            class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/EffortLeap" target="_blank">EffortLeap - Predictive Software Effort Estimation Tool</a></h3>
-                        <p>Developed a web-based tool using TypeScript and statistical modeling to predict task
-                            durations and software effort. Applied SPM principles to enhance planning accuracy by 20%
-                            through systematic estimation and risk mitigation.</p>
-                        <div class="tags">
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Statistical Modeling</span>
-                            <span class="tag">SPM</span>
-                            <span class="tag">UX Mapping</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/billing_system_ui_1776528904275.png"
-                            alt="Ponnangai Enterprises Billing Software" class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3>Ponnangai Enterprises Billing Software <span class="dev-status">(Under Dev)</span></h3>
-                        <p>Architected a full-stack prototype for inventory and billing management using Next.js and
-                            React.js for a housekeeping products manufacturer. Executed extensive manual functional and
-                            smoke testing, reducing inventory tracking errors by 30%. Resolved critical edge-case bugs
-                            in transaction reversal logic and PDF generation systems.</p>
-                        <div class="tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">React.js</span>
-                            <span class="tag">Functional Testing</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/ai_simulator_cli_1776528925052.png" alt="Digital Fugitive AI Simulator"
-                            class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/Digital-Fugitive-AI-Police-Surveillance" target="_blank">Digital Fugitive - AI Search Paradigm Simulator</a></h3>
-                        <p>Built a Python-based simulator implementing stochastic search and knowledge-based agents
-                            using Manhattan distance heuristics. Documented comprehensive system architecture, including
-                            detailed flowcharts and technical specifications.</p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">AI</span>
-                            <span class="tag">Heuristics</span>
-                            <span class="tag">System Architecture</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/cicd_pipeline_diagram_1776528945442.png" alt="CI/CD Pipeline"
-                            class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3>CI/CD Pipeline & Kubernetes Deployment</h3>
-                        <p>Architected and deployed an automated CI/CD pipeline for an Online Quiz System using Jenkins,
-                            Docker, and Kubernetes. Ensured reliable continuous delivery and scalable container
-                            orchestration for real-time application usage.</p>
-                        <div class="tags">
-                            <span class="tag">Jenkins</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">Kubernetes</span>
-                            <span class="tag">CI/CD</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Generated GitHub Projects -->
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/java_dashboard.png" alt="Java Dashboard Preview" class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/Agile-lab-feedback-system"
-                                target="_blank">Agile-lab-feedback-system</a></h3>
-                        <p>Feedback system developed for Agile testing lab</p>
-                        <div class="tags"><span class="tag">Java</span></div>
-                    </div>
-                </div>
-
-
-
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/web_js.png" alt="Simulation UI" class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/aloha-vs-csma-warfare"
-                                target="_blank">aloha-vs-csma-warfare</a></h3>
-                        <p>A gritty HTML/CSS/JS engine simulating data collision rates and tactical throughput
-                            efficiency for Pure ALOHA vs CSMA/CD.</p>
-                        <div class="tags"><span class="tag">CSS</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/python_ai.png" alt="Python AI preview" class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/MindSweeper-AI"
-                                target="_blank">MindSweeper-AI</a></h3>
-                        <p>An AI agent that uses knowledge-based logic to play Minesweeper.</p>
-                        <div class="tags"><span class="tag">Python</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/r_stats.png" alt="Data Analytics UI" class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/Hybrid-Ensemble-Tech-Mining"
-                                target="_blank">Hybrid-Ensemble-Tech-Mining</a></h3>
-                        <p>Predictive data mining system using a Hybrid ARIMA-NNETAR ensemble and DWT denoising to
-                            forecast software technology lifecycles from Stack Overflow data.</p>
-                        <div class="tags"><span class="tag">R</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/java_dashboard.png" alt="Java Dashboard Preview" class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/online-quiz-system-in-Agile"
-                                target="_blank">online-quiz-system-in-Agile</a></h3>
-                        <p>A robust, containerized Java application for evaluating online quiz submissions. Features
-                            comprehensive JUnit testing, a Dockerized environment, Jenkins CI/CD pipelines, and
-                            Kubernetes deployment configurations.</p>
-                        <div class="tags"><span class="tag">Java</span></div>
-                    </div>
-                </div>
-
-                <div class="project-card glass-card fade-in">
-                    <div class="project-img">
-                        <img src="assets/images/web_js.png" alt="Web JS Preview" class="duotone-filter">
-                    </div>
-                    <div class="project-info">
-                        <h3><a href="https://github.com/sooriya-moorthy-0107/Digital-Detox-Analyzer" target="_blank">Digital-Detox-Analyzer</a></h3>
-                        <p>A JavaScript project.</p>
-                        <div class="tags"><span class="tag">JavaScript</span></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer" id="contact">
-        <div class="container footer-content fade-in">
-            <div class="footer-brand">
-                <h2>Sooriya Moorthy R.</h2>
-                <p>Software Engineer & Project Manager</p>
-            </div>
-
-            <div class="footer-contact">
-                <p><i class="fa-solid fa-envelope"></i> <a
-                        href="mailto:sooriyamoorthy0107@gmail.com">sooriyamoorthy0107@gmail.com</a></p>
-                <p><i class="fa-solid fa-phone"></i> +91 8610126937</p>
-                <p><i class="fa-solid fa-location-dot"></i> Chennai / Vellore, Tamil Nadu</p>
-            </div>
-
-            <div class="footer-links">
-                <a href="https://www.linkedin.com/in/sooriya-moorthy-6030b0342/" class="social-link"
-                    aria-label="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/sooriya-moorthy-0107" class="social-link" aria-label="GitHub"
-                    target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Sooriya Moorthy R. All rights reserved.</p>
+        <div class="flex flex-wrap justify-center gap-8">
+            <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary font-body-md text-body-md" href="https://www.linkedin.com/in/sooriya-moorthy-6030b0342/" target="_blank">LinkedIn</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary font-body-md text-body-md" href="https://github.com/sooriya-moorthy-0107" target="_blank">GitHub</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary font-body-md text-body-md" href="https://x.com" target="_blank">Twitter</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary font-body-md text-body-md" href="mailto:sooriyamoorthy0107@gmail.com">Email</a>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-</body>
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero parallax effect on scroll
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroImg = document.querySelector('section img');
+                if (heroImg) {
+                    heroImg.style.transform = `translateY(${scrolled * 0.05}px)`;
+                }
+            });
 
+            // Responsive Drawer Menu toggle logic
+            const drawer = document.getElementById('mobile-menu-drawer');
+            const drawerContent = document.getElementById('mobile-drawer-content');
+            const toggleBtn = document.getElementById('menu-toggle-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+
+            function openDrawer() {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    drawer.classList.remove('opacity-0');
+                    drawerContent.classList.remove('translate-x-full');
+                }, 10);
+            }
+
+            function closeDrawer() {
+                drawerContent.classList.add('translate-x-full');
+                drawer.classList.add('opacity-0');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+
+            toggleBtn.addEventListener('click', openDrawer);
+            closeBtn.addEventListener('click', closeDrawer);
+            drawer.addEventListener('click', (e) => {
+                if (e.target === drawer) {
+                    closeDrawer();
+                }
+            });
+        });
+    </script>
+</body>
 </html>
