@@ -26,21 +26,21 @@ function drawFrame() {
     const cw = canvas.width;
     const ch = canvas.height;
 
-    // Fill background with the photo's charcoal colour
+    // Fill with the photo's charcoal bg — matches the photo bg colour
     ctx.fillStyle = '#1b1b1b';
     ctx.fillRect(0, 0, cw, ch);
 
-    // "contain" — keep full portrait visible, letter-box with dark bg
+    // "contain" — always show the full portrait, letter-box on sides
     const imgRatio    = img.naturalWidth / img.naturalHeight;
     const canvasRatio = cw / ch;
 
     let dw, dh;
     if (canvasRatio > imgRatio) {
-        // canvas is wider → fit by height
+        // canvas wider than image → fit by height
         dh = ch;
         dw = ch * imgRatio;
     } else {
-        // canvas is taller → fit by width
+        // canvas taller than image → fit by width
         dw = cw;
         dh = cw / imgRatio;
     }
@@ -58,37 +58,33 @@ const progressLabel = document.getElementById('load-progress');
 
 let loadedCount = 0;
 
-function onImageLoad() {
+function onLoad() {
     loadedCount++;
     const pct = Math.floor((loadedCount / FRAME_COUNT) * 100);
     if (fillBar)       fillBar.style.width = pct + '%';
     if (progressLabel) progressLabel.textContent = pct + '%';
-
-    if (loadedCount === FRAME_COUNT) {
-        initScene();
-    }
+    if (loadedCount === FRAME_COUNT) initScene();
 }
 
-resizeCanvas(); // set canvas size before images load
+resizeCanvas(); // size canvas before images arrive
 
 for (let i = 0; i < FRAME_COUNT; i++) {
-    const img  = new Image();
-    img.src    = frameSrc(i);
-    img.onload = onImageLoad;
-    img.onerror = onImageLoad; // don't hang if a frame is missing
-    images[i]  = img;
+    const img   = new Image();
+    img.src     = frameSrc(i);
+    img.onload  = onLoad;
+    img.onerror = onLoad;   // don't hang if a frame is missing
+    images[i]   = img;
 }
 
-// ── Init GSAP scene ────────────────────────────────────────────
+// ── Init GSAP scene after all frames ready ─────────────────────
 function initScene() {
-    // Dismiss preloader
+    // Fade out preloader
     if (preloader) {
         preloader.style.opacity = '0';
-        setTimeout(() => preloader.style.display = 'none', 600);
+        setTimeout(() => { preloader.style.display = 'none'; }, 600);
     }
 
-    // Draw first frame
-    drawFrame();
+    drawFrame(); // render frame 0
 
     const heroTrigger = {
         trigger : '#hero-scroll-container',
@@ -97,32 +93,32 @@ function initScene() {
         scrub   : 0.6
     };
 
-    // ── Image Sequence ──────────────────────────────────────────
+    // Image sequence — frame counter drives drawFrame via onUpdate
     gsap.to(seq, {
-        frame: FRAME_COUNT - 1,
-        ease : 'none',
-        onUpdate: drawFrame,
+        frame     : FRAME_COUNT - 1,
+        ease      : 'none',
+        onUpdate  : drawFrame,
         scrollTrigger: heroTrigger
     });
 
-    // ── Text: top-left → sweeps to right ──────────────────────
-    // Start well off-screen left, end off-screen right
+    // Text #1: sweeps LEFT → RIGHT as user scrolls
+    // Start: fully off-screen to the left;  End: fully off-screen to the right
     gsap.fromTo('#text-top',
-        { x: '-105vw', y: '15vh' },
+        { x: '-110vw' },
         {
-            x: '105vw', y: '15vh',
+            x: '110vw',
             ease: 'none',
-            scrollTrigger: heroTrigger
+            scrollTrigger: { ...heroTrigger, scrub: 1 }
         }
     );
 
-    // ── Text: bottom-right → sweeps to left ───────────────────
+    // Text #2: sweeps RIGHT → LEFT (opposite direction)
     gsap.fromTo('#text-bottom',
-        { x: '105vw', y: '75vh' },
+        { x: '110vw' },
         {
-            x: '-105vw', y: '75vh',
+            x: '-110vw',
             ease: 'none',
-            scrollTrigger: { ...heroTrigger, scrub: 0.8 }
+            scrollTrigger: { ...heroTrigger, scrub: 1 }
         }
     );
 }
