@@ -1,0 +1,12 @@
+# Documentation & design guides
+Apple-Inspired Web Design System.md
+
+# OS / Environment files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
