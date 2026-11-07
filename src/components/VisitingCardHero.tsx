@@ -6,7 +6,8 @@ import {
   RotateCw, 
   ChevronDown, 
   ShieldCheck, 
-  MapPin
+  MapPin,
+  Sparkles
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
@@ -34,7 +35,7 @@ export default function VisitingCardHero({ onScrollToChapters, onReplayIntro }: 
   const glareY = useTransform(mouseYSpring, [-0.5, 0.5], ['0%', '100%']);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isFlipped) return;
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -50,6 +51,13 @@ export default function VisitingCardHero({ onScrollToChapters, onReplayIntro }: 
   };
 
   const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const handleToggleFlip = () => {
+    setIsFlipped((prev) => !prev);
+    // Reset tilt on flip for clean 3D perspective
     x.set(0);
     y.set(0);
   };
@@ -71,7 +79,7 @@ export default function VisitingCardHero({ onScrollToChapters, onReplayIntro }: 
               className="hover:text-cyan-300 text-slate-400 transition-colors flex items-center gap-1 text-[11px] cursor-pointer"
             >
               <RotateCw className="w-3 h-3" />
-              <span className="hidden xs:inline">REPLAY</span>
+              <span className="hidden xs:inline">REPLAY INTRO</span>
             </button>
           )}
           <span className="text-slate-600 hidden xs:inline">|</span>
@@ -90,195 +98,217 @@ export default function VisitingCardHero({ onScrollToChapters, onReplayIntro }: 
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative w-full max-w-[580px] min-h-[380px] sm:min-h-[370px] cursor-grab active:cursor-grabbing [perspective:1200px]"
+          className="relative w-full max-w-[580px] min-h-[390px] sm:min-h-[380px] [perspective:1400px] select-none"
         >
+          {/* Level 1: Tilt Physics Wrapper */}
           <motion.div
             style={{
-              rotateX,
-              rotateY,
+              rotateX: isFlipped ? 0 : rotateX,
+              rotateY: isFlipped ? 0 : rotateY,
               transformStyle: 'preserve-3d',
             }}
-            animate={{
-              rotateY: isFlipped ? 180 : 0,
-            }}
-            transition={{
-              rotateY: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
-            }}
-            className="relative w-full h-full min-h-[380px] sm:min-h-[370px] rounded-2xl border border-cyan-400/40 shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(0,240,255,0.2)] backdrop-blur-xl"
+            className="w-full h-full"
           >
-            {/* Dynamic Glare Light Sheen */}
+            {/* Level 2: Flip 180° Motion Container */}
             <motion.div
-              style={{
-                background: `radial-gradient(circle at ${glareX} ${glareY}, rgba(0, 240, 255, 0.22) 0%, transparent 60%)`,
-              }}
-              className="absolute inset-0 rounded-2xl pointer-events-none z-30"
-            />
-
-            {/* FRONT FACE OF THE VISITING CARD */}
-            <div
-              style={{ backfaceVisibility: 'hidden' }}
-              className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[#0c162e]/98 via-[#070e20]/98 to-[#040813] p-5 sm:p-7 flex flex-col justify-between overflow-hidden"
+              animate={{ rotateY: isFlipped ? 180 : 0 }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformStyle: 'preserve-3d' }}
+              className="relative w-full h-full min-h-[390px] sm:min-h-[380px] rounded-2xl border border-cyan-400/40 shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(0,240,255,0.2)] backdrop-blur-xl"
             >
-              {/* Subtle circuit lines overlay */}
-              <div className="absolute inset-0 cyber-grid opacity-20 pointer-events-none" />
+              {/* Dynamic Glare Light Sheen */}
+              <motion.div
+                style={{
+                  background: `radial-gradient(circle at ${glareX} ${glareY}, rgba(0, 240, 255, 0.22) 0%, transparent 60%)`,
+                }}
+                className="absolute inset-0 rounded-2xl pointer-events-none z-30"
+              />
 
-              {/* Card Header */}
-              <div className="relative z-10 flex items-start justify-between gap-2">
-                <div className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-cyan-400/50 overflow-hidden bg-cyan-950/40 p-0.5 shadow-[0_0_12px_rgba(0,240,255,0.3)] shrink-0">
-                    <img
-                      src={PORTFOLIO_DATA.profile.photo}
-                      alt={PORTFOLIO_DATA.profile.name}
-                      className="w-full h-full object-cover rounded-lg"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-cyan-400/10 mix-blend-overlay" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="text-[11px] sm:text-xs font-mono font-bold text-cyan-400 tracking-wider">
-                        SYS.ID // SM-0107
-                      </span>
-                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                        ONLINE
-                      </span>
+              {/* FRONT FACE OF THE VISITING CARD */}
+              <div
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(0deg)',
+                }}
+                className={`absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[#0c162e]/98 via-[#070e20]/98 to-[#040813] p-5 sm:p-7 flex flex-col justify-between transition-all duration-300 ${
+                  isFlipped ? 'pointer-events-none opacity-0 z-0' : 'pointer-events-auto opacity-100 z-10'
+                }`}
+              >
+                {/* Subtle circuit lines overlay */}
+                <div className="absolute inset-0 cyber-grid opacity-20 pointer-events-none" />
+
+                {/* Card Header */}
+                <div className="relative z-10 flex items-start justify-between gap-2">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-cyan-400/50 overflow-hidden bg-cyan-950/40 p-0.5 shadow-[0_0_12px_rgba(0,240,255,0.3)] shrink-0">
+                      <img
+                        src={PORTFOLIO_DATA.profile.photo}
+                        alt={PORTFOLIO_DATA.profile.name}
+                        className="w-full h-full object-cover rounded-lg"
+                        onError={(e) => {
+                          (e.target as HTMLElement).style.display = 'none';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-cyan-400/10 mix-blend-overlay" />
                     </div>
-                    <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-0.5">
-                      <MapPin className="w-3 h-3 text-cyan-400 shrink-0" />
-                      <span className="truncate">{PORTFOLIO_DATA.profile.location}</span>
+                    <div>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[11px] sm:text-xs font-mono font-bold text-cyan-400 tracking-wider">
+                          SYS.ID // SM-0107
+                        </span>
+                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                          ONLINE
+                        </span>
+                      </div>
+                      <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-0.5">
+                        <MapPin className="w-3 h-3 text-cyan-400 shrink-0" />
+                        <span className="truncate">{PORTFOLIO_DATA.profile.location}</span>
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Flip Card Action Button */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleToggleFlip();
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-950/80 border border-cyan-400/60 text-cyan-300 hover:bg-cyan-500/20 hover:text-white transition-all text-xs font-mono shadow-[0_0_12px_rgba(0,240,255,0.3)] shrink-0 cursor-pointer active:scale-95 touch-manipulation"
+                    title="View Architectural Dossier"
+                  >
+                    <RotateCw className="w-3.5 h-3.5" />
+                    <span>SPECS</span>
+                  </button>
+                </div>
+
+                {/* Card Center: Name & Tagline */}
+                <div className="relative z-10 my-2" style={{ transform: 'translateZ(20px)' }}>
+                  <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white font-mono flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span>SOORIYA MOORTHY</span>
+                    <span className="text-cyan-400 font-normal">PONNANGAI</span>
+                  </h1>
+                  <div className="text-[11px] sm:text-xs font-mono text-cyan-300 font-semibold tracking-wider mt-1 flex flex-wrap items-center gap-1.5">
+                    <span>SOFTWARE ENGINEER</span>
+                    <span className="text-slate-500">•</span>
+                    <span className="text-blue-400">SYSTEMS ARCHITECT</span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-slate-300 mt-2 sm:mt-2.5 leading-relaxed max-w-xl font-sans">
+                    {PORTFOLIO_DATA.profile.tagline}
+                  </p>
+                </div>
+
+                {/* Card Footer: Badges & Direct Links */}
+                <div className="relative z-10 pt-2.5 border-t border-cyan-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-950/70 border border-blue-500/40 text-blue-300 flex items-center gap-1">
+                      <Radio className="w-2.5 h-2.5 text-cyan-400 shrink-0" />
+                      RJ SOMU @ VIT Community Radio
+                    </span>
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/70 border border-cyan-500/40 text-cyan-300">
+                      SDE with 8.27 CGPA @ VIT Vellore
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={PORTFOLIO_DATA.profile.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors"
+                      title="GitHub Profile"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                    </a>
+                    <a
+                      href={PORTFOLIO_DATA.profile.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors"
+                      title="LinkedIn"
+                    >
+                      <LinkedinIcon className="w-3.5 h-3.5" />
+                    </a>
+                    <a
+                      href={PORTFOLIO_DATA.profile.resumeUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-mono font-bold text-xs hover:brightness-110 shadow-[0_0_12px_rgba(0,240,255,0.4)] transition-all cursor-pointer"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>CV</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* BACK FACE OF THE VISITING CARD (ARCHITECTURAL SPECS) */}
+              <div
+                style={{
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',
+                }}
+                className={`absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[#070e20] via-[#050b1a] to-[#02050e] p-5 sm:p-7 flex flex-col justify-between border border-cyan-400/40 transition-all duration-300 ${
+                  isFlipped ? 'pointer-events-auto opacity-100 z-10' : 'pointer-events-none opacity-0 z-0'
+                }`}
+              >
+                <div className="relative z-10 flex items-center justify-between border-b border-cyan-500/20 pb-2.5">
+                  <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
+                    <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <span className="truncate">ARCHITECTURAL DOSSIER // SPECS</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleToggleFlip();
+                    }}
+                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-cyan-950/80 border border-cyan-400/60 text-cyan-300 hover:text-white text-xs font-mono cursor-pointer active:scale-95 touch-manipulation shadow-[0_0_12px_rgba(0,240,255,0.3)] shrink-0"
+                  >
+                    <RotateCw className="w-3 h-3" />
+                    <span>FRONT</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 my-2 text-[11px] sm:text-xs font-mono">
+                  <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
+                    <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">CORE DISCIPLINE</div>
+                    <div className="text-slate-300 text-[11px]">Software Architecture & SQA</div>
+                  </div>
+                  <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
+                    <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">BROADCAST OPS</div>
+                    <div className="text-slate-300 text-[11px]">RJ SOMU @ 90.8 MHz Console</div>
+                  </div>
+                  <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
+                    <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">ENTERPRISE POS</div>
+                    <div className="text-slate-300 text-[11px]">FastAPI + PostgreSQL + Docker</div>
+                  </div>
+                  <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
+                    <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">AI PIPELINES</div>
+                    <div className="text-slate-300 text-[11px]">Yap-To-Tale Story Engine</div>
                   </div>
                 </div>
 
-                {/* Flip Card Action Button */}
-                <button
-                  type="button"
-                  onClick={() => setIsFlipped(true)}
-                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/20 hover:text-white transition-all text-xs font-mono shadow-[0_0_12px_rgba(0,240,255,0.2)] shrink-0 cursor-pointer"
-                >
-                  <RotateCw className="w-3 h-3" />
-                  <span>SPECS</span>
-                </button>
-              </div>
-
-              {/* Card Center: Name & Tagline */}
-              <div className="relative z-10 my-2" style={{ transform: 'translateZ(20px)' }}>
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white font-mono flex flex-wrap items-center gap-1.5 sm:gap-2">
-                  <span>SOORIYA MOORTHY</span>
-                  <span className="text-cyan-400 font-normal">PONNANGAI</span>
-                </h1>
-                <div className="text-[11px] sm:text-xs font-mono text-cyan-300 font-semibold tracking-wider mt-1 flex flex-wrap items-center gap-1.5">
-                  <span>SOFTWARE ENGINEER</span>
-                  <span className="text-slate-500">•</span>
-                  <span className="text-blue-400">SYSTEMS ARCHITECT</span>
-                </div>
-                <p className="text-[11px] sm:text-xs text-slate-300 mt-2 sm:mt-2.5 leading-relaxed max-w-xl font-sans">
-                  {PORTFOLIO_DATA.profile.tagline}
-                </p>
-              </div>
-
-              {/* Card Footer: Badges & Direct Links */}
-              <div className="relative z-10 pt-2.5 border-t border-cyan-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-                <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-950/60 border border-blue-500/30 text-blue-300 flex items-center gap-1">
-                    <Radio className="w-2.5 h-2.5 text-cyan-400 shrink-0" />
-                    VIT RADIO 90.8 MHz
-                  </span>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/60 border border-cyan-500/30 text-cyan-300">
-                    VIT CSE '26 • 8.27 CGPA
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <a
-                    href={PORTFOLIO_DATA.profile.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors"
-                    title="GitHub Profile"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href={PORTFOLIO_DATA.profile.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-colors"
-                    title="LinkedIn"
-                  >
-                    <LinkedinIcon className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href={PORTFOLIO_DATA.profile.resumeUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-mono font-bold text-xs hover:brightness-110 shadow-[0_0_12px_rgba(0,240,255,0.4)] transition-all cursor-pointer"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>CV</span>
-                  </a>
+                <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 border-t border-cyan-500/20 pt-2">
+                  <span className="truncate pr-2">COMMS: {PORTFOLIO_DATA.profile.email}</span>
+                  <span className="text-cyan-400 shrink-0">VERIFIED // VIT '26</span>
                 </div>
               </div>
-            </div>
-
-            {/* BACK FACE OF THE VISITING CARD (ARCHITECTURAL SPECS) */}
-            <div
-              style={{
-                backfaceVisibility: 'hidden',
-                transform: 'rotateY(180deg)',
-              }}
-              className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[#070e20] via-[#050b1a] to-[#02050e] p-5 sm:p-7 flex flex-col justify-between border border-cyan-400/40 overflow-hidden"
-            >
-              <div className="relative z-10 flex items-center justify-between border-b border-cyan-500/20 pb-2.5">
-                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
-                  <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span className="truncate">ARCHITECTURAL DOSSIER</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsFlipped(false)}
-                  className="flex items-center gap-1 px-2.5 py-1 rounded bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 hover:text-white text-xs font-mono cursor-pointer shrink-0"
-                >
-                  <RotateCw className="w-3 h-3" />
-                  <span>FRONT</span>
-                </button>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 my-2 text-[11px] sm:text-xs font-mono">
-                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
-                  <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">CORE DISCIPLINE</div>
-                  <div className="text-slate-300 text-[11px]">Software Architecture & SQA</div>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
-                  <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">BROADCAST OPS</div>
-                  <div className="text-slate-300 text-[11px]">90.8 MHz Console Engineering</div>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
-                  <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">ENTERPRISE POS</div>
-                  <div className="text-slate-300 text-[11px]">FastAPI + PostgreSQL + Docker</div>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-900/60 border border-cyan-500/20">
-                  <div className="text-cyan-400 font-bold mb-0.5 text-[10px]">AI PIPELINES</div>
-                  <div className="text-slate-300 text-[11px]">Yap-To-Tale Story Engine</div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 border-t border-cyan-500/20 pt-2">
-                <span className="truncate pr-2">COMMS: {PORTFOLIO_DATA.profile.email}</span>
-                <span className="text-cyan-400 shrink-0">VERIFIED // '26</span>
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
-        {/* Card Hint */}
-        <p className="mt-3 text-[11px] font-mono text-cyan-400/70 flex items-center gap-1.5">
-          <span>TILT WITH CURSOR</span>
-          <span>•</span>
-          <span>CLICK 'SPECS' TO FLIP</span>
-        </p>
+        {/* Card Hint with One-Click Flip */}
+        <button
+          type="button"
+          onClick={handleToggleFlip}
+          className="mt-3 text-[11px] font-mono text-cyan-400/80 hover:text-cyan-300 flex items-center gap-1.5 transition-colors cursor-pointer py-1 px-3 rounded-full hover:bg-cyan-950/40 border border-transparent hover:border-cyan-500/30"
+        >
+          <Sparkles className="w-3 h-3 text-cyan-400" />
+          <span>{isFlipped ? 'CLICK TO FLIP TO FRONT' : 'CLICK TO FLIP CARD (SPECS / FRONT)'}</span>
+        </button>
       </div>
 
       {/* Bottom Scroll Call To Action */}

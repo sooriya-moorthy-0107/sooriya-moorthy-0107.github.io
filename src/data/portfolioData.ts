@@ -7,7 +7,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     shortName: "Sooriya Moorthy R",
     handle: "sooriya-moorthy-0107",
     title: "Software Engineer & Systems Architect",
-    tagline: "Engineering fault-tolerant software systems and real-world architectures with the high-pressure composure of live broadcast operations.",
+    tagline: "Building resilient software systems and scalable architectures — with the precision and calm of someone who's gone live on-air in front of thousands.",
     location: "Vellore / Chennai, India",
     institution: "Vellore Institute of Technology (VIT)",
     degree: "Integrated M.Tech Software Engineering (2021 - 2026)",
@@ -23,32 +23,32 @@ export const PORTFOLIO_DATA: PortfolioData = {
 
   foundation: {
     headline: "The Signal & The Logic",
-    subtitle: "Where rigorous engineering discipline meets live on-air composure.",
+    subtitle: "Where rigorous software engineering discipline meets real-world execution.",
     bio: [
-      "I am an analytical 4th-year Integrated M.Tech Software Engineering student at VIT. My core engineering ethos is formed at the intersection of architectural discipline and real-time operational execution.",
-      "Leading executive operations and audio consoles at VIT Community Radio (90.8 MHz) taught me composure under intense pressure, zero-downtime mentality, and precise timing. When hundreds of listeners tune in live, there is no reload button.",
-      "I bring that exact operational discipline to building software systems: from custom enterprise retail point-of-sale platforms handling daily financial transactions to multimodal generative AI pipelines and predictive analytics engines."
+      "I am a final-year Integrated M.Tech Software Engineering student at VIT Vellore, building production-grade systems that solve real business problems — from enterprise retail POS platforms to multimodal AI pipelines and predictive analytics engines.",
+      "Beyond code, I've operated live broadcast consoles at VIT Community Radio (90.8 MHz), managed high-stakes campus events, and hosted shows reaching thousands of listeners — experiences that forged an uncompromising zero-downtime, high-pressure execution mindset I carry into every software system I build.",
+      "I bring that same discipline to software: clean architecture, ACID-compliant databases, automated CI/CD, and systems that hold up when it matters most."
     ],
     stats: [
       { label: "Academic CGPA", value: "8.27", note: "Integrated M.Tech Software Eng." },
-      { label: "Broadcasting", value: "90.8 MHz", note: "VIT Radio Advisory & Vice Chair" },
-      { label: "Major Live Events", value: "5+", note: "Flawless real-time execution" },
+      { label: "Tech Stack", value: "10+", note: "Languages, frameworks & cloud tools" },
+      { label: "Campus Events", value: "3+", note: "Gravitas leadership — Volunteer → Manager" },
       { label: "Production Builds", value: "100%", note: "Zero-loss transactional systems" }
     ],
     pillars: [
       {
-        title: "High-Pressure Composure",
-        description: "Executing real-time decisions without hesitation, honed from hours managing live radio consoles and high-stakes campus broadcasting.",
-        icon: "Radio"
-      },
-      {
-        title: "System Resilience",
-        description: "Designing backend services and relational databases with strict ACID compliance, automated rollback mechanisms, and defensive error handling.",
+        title: "Systems Architecture",
+        description: "Designing backend services and relational databases with strict ACID compliance, automated rollback, and fault-tolerant error handling across production environments.",
         icon: "ShieldCheck"
       },
       {
-        title: "Product Strategy & Quality",
-        description: "Specializing in Software Quality Assurance, requirement modeling, agile execution, and bridging business requirements into clean code.",
+        title: "High-Pressure Execution",
+        description: "Real-time decision making under pressure — honed from managing live radio broadcasts for thousands and leading large-scale campus events as a manager.",
+        icon: "Radio"
+      },
+      {
+        title: "Product Quality & Strategy",
+        description: "Specializing in Software Quality Assurance, requirement modeling, agile sprint execution, and bridging business requirements into clean, testable code.",
         icon: "Cpu"
       }
     ]

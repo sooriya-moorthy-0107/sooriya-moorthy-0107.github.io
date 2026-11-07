@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Download, RotateCw, Menu, X, Radio, Sun, Moon } from 'lucide-react';
+import { Download, RotateCw, Menu, X, Terminal, Sun, Moon } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { useTheme } from '../context/ThemeContext';
 
@@ -18,7 +18,7 @@ export default function Navbar({ onReplayIntro }: NavbarProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
 
-      const sections = ['hero', 'foundation', 'arsenal', 'terminal', 'artifacts', 'contact'];
+      const sections = ['hero', 'foundation', 'arsenal', 'personal', 'terminal', 'artifacts', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -40,11 +40,12 @@ export default function Navbar({ onReplayIntro }: NavbarProps) {
 
   const navLinks = [
     { id: 'hero', label: '00 // CARD', href: '#hero' },
-    { id: 'foundation', label: '01 // FOUNDATION', href: '#foundation' },
-    { id: 'arsenal', label: '02 // ARSENAL', href: '#arsenal' },
-    { id: 'terminal', label: '03 // CONSOLE', href: '#terminal' },
-    { id: 'artifacts', label: '04 // PROJECTS', href: '#artifacts' },
-    { id: 'contact', label: '05 // CONTACT', href: '#contact' },
+    { id: 'foundation', label: '01 // PROFILE', href: '#foundation' },
+    { id: 'arsenal', label: '02 // SKILLS', href: '#arsenal' },
+    { id: 'personal', label: '03 // CAMPUS', href: '#personal' },
+    { id: 'terminal', label: '04 // CONSOLE', href: '#terminal' },
+    { id: 'artifacts', label: '05 // PROJECTS', href: '#artifacts' },
+    { id: 'contact', label: '06 // CONTACT', href: '#contact' },
   ];
 
   const scrollTo = (href: string) => {
@@ -76,7 +77,7 @@ export default function Navbar({ onReplayIntro }: NavbarProps) {
           className="flex items-center gap-2 text-left group cursor-pointer shrink-0"
         >
           <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-cyan-950/80 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-[0_0_12px_rgba(0,240,255,0.3)] group-hover:border-cyan-300 group-hover:scale-105 transition-all">
-            <Radio className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </div>
           <div>
             <div className="text-xs sm:text-sm font-bold font-mono tracking-tight text-white group-hover:text-cyan-300 transition-colors">
@@ -84,7 +85,7 @@ export default function Navbar({ onReplayIntro }: NavbarProps) {
             </div>
             <div className="text-[9px] sm:text-[10px] font-mono text-cyan-400/80 flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>90.8 MHz // CSE ARCHITECT</span>
+              <span>SDE // VIT VELLORE</span>
             </div>
           </div>
         </button>
@@ -219,3 +220,4 @@ export default function Navbar({ onReplayIntro }: NavbarProps) {
     </header>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, FastForward, ShieldAlert } from 'lucide-react';
 
@@ -10,6 +10,7 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
   const [progress, setProgress] = useState(0);
   const [stage, setStage] = useState<'charging' | 'ready' | 'throwing' | 'done'>('charging');
   const [statusText, setStatusText] = useState('CALIBRATING NEURAL FREQUENCIES...');
+  const matrixCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -21,6 +22,67 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onComplete]);
 
+  // Matrix rain effect
+  useEffect(() => {
+    const canvas = matrixCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const chars = '01\u30A2\u30A4\u30A6\u30A8\u30AA\u30AB\u30AD\u30AF\u30B1\u30B3\u30B5\u30B7\u30B9\u30BB\u30BD\u30BF\u30C1\u30C4\u30C6\u30C8\u30CA\u30CB\u30CC\u30CD\u30CE';
+    const fontSize = 13;
+    let columns = Math.floor(canvas.width / fontSize);
+    const drops: number[] = Array(columns).fill(1);
+
+    const draw = () => {
+      columns = Math.floor(canvas.width / fontSize);
+      while (drops.length < columns) drops.push(Math.random() * -100);
+
+      ctx.fillStyle = 'rgba(3, 6, 17, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = `${fontSize}px monospace`;
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        // Gradient: bright cyan head, fading green body
+        const y = drops[i] * fontSize;
+        if (y > 0 && y < canvas.height) {
+          ctx.fillStyle = '#00f0ff';
+          ctx.globalAlpha = 0.9;
+          ctx.fillText(char, i * fontSize, y);
+          ctx.fillStyle = '#00cc77';
+          ctx.globalAlpha = 0.35;
+          ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * fontSize, y - fontSize);
+        }
+        ctx.globalAlpha = 1;
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    };
+
+    let animId: number;
+    const loop = () => {
+      draw();
+      animId = requestAnimationFrame(loop);
+    };
+    loop();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -31,7 +93,7 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
           return 100;
         }
 
-        if (prev === 25) setStatusText('ESTABLISHING BROADCAST SYNC [90.8 MHz]...');
+        if (prev === 25) setStatusText('ESTABLISHING SIGNAL LINK [90.8 MHz]...');
         if (prev === 55) setStatusText('SYNTHESIZING HOLOGRAPHIC CREDENTIALS...');
         if (prev === 85) setStatusText('CHARGING CYBER CARD ARMATURE...');
 
@@ -47,7 +109,6 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
     setStage('throwing');
     setStatusText('TRANSMITTING PROTOCOL TO HERO...');
 
-    // Wait for the card throw animation to reach camera, then complete to Hero
     setTimeout(() => {
       setStage('done');
       setTimeout(() => {
@@ -55,6 +116,17 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
       }, 350);
     }, 1000);
   };
+
+  // Swing/pendulum animation for witch
+  const witchAnimation =
+    stage === 'throwing'
+      ? { scale: [1, 0.95, 1.02], x: [-5, 15, 0], rotate: [0, -8, 15, 0] }
+      : { rotate: [-8, 8, -8], y: [-4, 4, -4] };
+
+  const witchTransition: import('framer-motion').Transition =
+    stage === 'throwing'
+      ? { duration: 0.5 }
+      : { duration: 3.5, repeat: Infinity, ease: 'easeInOut' as const };
 
   return (
     <AnimatePresence>
@@ -64,10 +136,16 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.5 } }}
         >
-          {/* Cyber grid & background ambient pulse */}
-          <div className="absolute inset-0 cyber-grid opacity-30 pointer-events-none" />
+          {/* Matrix Rain Canvas Background */}
+          <canvas
+            ref={matrixCanvasRef}
+            className="absolute inset-0 w-full h-full pointer-events-none opacity-60"
+          />
 
-          {/* Lokah-style sonic radar shockwaves (constrained within viewport) */}
+          {/* Cyber grid overlay */}
+          <div className="absolute inset-0 cyber-grid opacity-15 pointer-events-none" />
+
+          {/* Lokah-style sonic radar shockwaves */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
             <motion.div
               animate={{
@@ -116,19 +194,11 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
           {/* Main Visual Arena: The Cyber Witch & Card */}
           <div className="relative w-full max-w-lg my-auto h-[320px] sm:h-[380px] flex items-center justify-center overflow-hidden">
             
-            {/* The Stylized Cyber Witch Silhouette */}
+            {/* The Stylized Cyber Witch Silhouette â€” swing/pendulum motion */}
             <motion.div
-              className="relative z-10 flex flex-col items-center"
-              animate={
-                stage === 'throwing'
-                  ? { scale: [1, 0.95, 1.02], x: [-5, 15, 0] }
-                  : { y: [-6, 6, -6] }
-              }
-              transition={
-                stage === 'throwing'
-                  ? { duration: 0.5 }
-                  : { duration: 4, repeat: Infinity, ease: 'easeInOut' }
-              }
+              className="relative z-10 flex flex-col items-center origin-top"
+              animate={witchAnimation}
+              transition={witchTransition}
             >
               {/* Cyber Witch Vector Art */}
               <svg
@@ -248,7 +318,7 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
                 </div>
 
                 <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 border-t border-cyan-500/30 pt-1">
-                  <span>90.8 MHz CONSOLE</span>
+                  <span>RJ SOMU @ VIT RADIO</span>
                   <span className="text-cyan-400 font-bold">FLICK</span>
                 </div>
               </div>
@@ -318,3 +388,4 @@ export default function CyberWitchIntro({ onComplete }: CyberWitchIntroProps) {
     </AnimatePresence>
   );
 }
+

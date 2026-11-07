@@ -170,8 +170,15 @@ export default function ChapterContact({ onReplayIntro, onScrollToTop }: Chapter
               </div>
 
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800">
-                <span className="text-slate-500 text-[10px] block">BROADCAST CALLSIGN</span>
-                <span className="text-slate-200">VIT Community Radio 90.8 MHz</span>
+                <span className="text-slate-500 text-[10px] block">WEBSITE</span>
+                <a
+                  href="https://ponnangai.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-cyan-300 hover:underline font-semibold"
+                >
+                  ponnangai.com
+                </a>
               </div>
             </div>
           </div>
@@ -217,8 +224,7 @@ export default function ChapterContact({ onReplayIntro, onScrollToTop }: Chapter
       <div className="mt-16 sm:mt-24 pt-6 sm:pt-8 border-t border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 text-center sm:text-left">
         <div>
           <span>SOORIYA MOORTHY PONNANGAI // 2026</span>
-          <span className="mx-2 hidden sm:inline">•</span>
-          <span className="text-cyan-400 block sm:inline mt-1 sm:mt-0">VIT RADIO 90.8 MHz</span>
+
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4">

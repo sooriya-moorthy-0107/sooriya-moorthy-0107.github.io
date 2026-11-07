@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { Radio, ShieldCheck, Cpu, Mic, Award } from 'lucide-react';
+import { ShieldCheck, Award, Terminal, Code2, Zap } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 export default function ChapterFoundation() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // Audio waveform animation representing 90.8 MHz radio frequency
+  // System runtime event-stream throughput waveform simulation
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -22,15 +22,15 @@ export default function ChapterFoundation() {
 
       ctx.clearRect(0, 0, width, height);
 
-      // Draw baseline
-      ctx.strokeStyle = 'rgba(0, 240, 255, 0.15)';
+      // Baseline grid line
+      ctx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(0, height / 2);
       ctx.lineTo(width, height / 2);
       ctx.stroke();
 
-      // Draw primary carrier wave (90.8 MHz broadcast simulation)
+      // Primary system throughput waveform
       ctx.strokeStyle = '#00f0ff';
       ctx.lineWidth = 2;
       ctx.shadowColor = '#00f0ff';
@@ -38,23 +38,24 @@ export default function ChapterFoundation() {
       ctx.beginPath();
 
       for (let x = 0; x < width; x++) {
-        const freq1 = Math.sin(x * 0.02 + step) * 20;
-        const freq2 = Math.cos(x * 0.05 - step * 1.5) * 10;
-        const freq3 = Math.sin(x * 0.008 + step * 0.5) * 6;
-        const y = height / 2 + (freq1 + freq2 + freq3) * (0.3 + 0.7 * Math.sin(x / width * Math.PI));
+        const freq1 = Math.sin(x * 0.02 + step) * 18;
+        const freq2 = Math.cos(x * 0.045 - step * 1.4) * 8;
+        const freq3 = Math.sin(x * 0.008 + step * 0.6) * 5;
+        const envelope = 0.3 + 0.7 * Math.sin((x / width) * Math.PI);
+        const y = height / 2 + (freq1 + freq2 + freq3) * envelope;
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
 
-      // Secondary frequency harmonic wave
+      // Secondary latency telemetry stream
       ctx.strokeStyle = '#3b82f6';
       ctx.lineWidth = 1.5;
       ctx.shadowBlur = 0;
       ctx.beginPath();
       for (let x = 0; x < width; x += 3) {
-        const y = height / 2 + Math.sin(x * 0.03 - step * 2) * 14 * Math.sin(x / width * Math.PI);
+        const y = height / 2 + Math.sin(x * 0.03 - step * 2) * 12 * Math.sin((x / width) * Math.PI);
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
@@ -74,19 +75,19 @@ export default function ChapterFoundation() {
       <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest mb-3">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-          <span>CHAPTER 01 // THE SIGNAL & THE LOGIC</span>
+          <span>CHAPTER 01 // FOUNDATION & ARCHITECTURE</span>
         </div>
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight font-mono">
-          Architectural Rigor × Live Composure
+          Architectural Rigor × Operational Calm
         </h2>
         <p className="mt-2 text-slate-400 max-w-2xl text-xs sm:text-base font-sans px-2">
-          How mastering live broadcast consoles at VIT Radio forged a zero-downtime mindset for software systems.
+          A software engineer building resilient, zero-downtime systems — bringing the composure of live operations into distributed software architectures.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
         
-        {/* Left Column: Narrative & Radio Console (7 cols) */}
+        {/* Left Column: Narrative & System Telemetry (7 cols) */}
         <div className="lg:col-span-7 space-y-6 w-full">
           
           {/* Main Story Panel */}
@@ -94,15 +95,15 @@ export default function ChapterFoundation() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-2xl pointer-events-none" />
 
             <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-4 border-b border-cyan-500/20 pb-2">
-              <Mic className="w-3.5 h-3.5" />
-              <span>TRANSMISSION ARCHIVE // VIT COMMUNITY RADIO</span>
+              <Terminal className="w-3.5 h-3.5" />
+              <span>SOFTWARE ENGINEERING DOSSIER // SOORIYA MOORTHY</span>
             </div>
 
-            <div className="space-y-4 text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
+            <div className="space-y-4 text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed font-sans">
               <p>
                 {PORTFOLIO_DATA.foundation.bio[0]}
               </p>
-              <p className="border-l-2 border-cyan-400 pl-4 text-cyan-100 italic bg-cyan-950/20 py-2 rounded-r-lg">
+              <p className="border-l-2 border-cyan-400 pl-4 text-cyan-100 italic bg-cyan-950/20 py-2 rounded-r-lg font-mono text-xs sm:text-sm">
                 "{PORTFOLIO_DATA.foundation.bio[1]}"
               </p>
               <p>
@@ -110,14 +111,14 @@ export default function ChapterFoundation() {
               </p>
             </div>
 
-            {/* Live Frequency Waveform Visualizer */}
+            {/* Live System Telemetry Stream Visualizer */}
             <div className="mt-6 pt-6 border-t border-cyan-500/20">
               <div className="flex items-center justify-between text-xs font-mono text-cyan-400 mb-2 flex-wrap gap-1">
                 <span className="flex items-center gap-1.5">
-                  <Radio className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-                  CARRIER: 90.8 MHz [ACTIVE]
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  SYSTEM TELEMETRY: REAL-TIME EVENT STREAM [ACTIVE]
                 </span>
-                <span className="text-slate-400 text-[11px]">GAIN: +3.2 dB</span>
+                <span className="text-slate-400 text-[11px]">LATENCY: &lt;12ms // 0% LOSS</span>
               </div>
               <div className="w-full bg-[#030611] rounded-xl border border-cyan-500/30 p-2 overflow-hidden shadow-inner">
                 <canvas ref={canvasRef} className="w-full h-[90px] block" />
@@ -133,12 +134,12 @@ export default function ChapterFoundation() {
                 className="glass-panel p-4 sm:p-5 rounded-xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all hover:-translate-y-1"
               >
                 <div className="w-9 h-9 rounded-lg bg-cyan-950/70 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-3 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
-                  {idx === 0 ? <Radio className="w-4 h-4" /> : idx === 1 ? <ShieldCheck className="w-4 h-4" /> : <Cpu className="w-4 h-4" />}
+                  {idx === 0 ? <Code2 className="w-4 h-4" /> : idx === 1 ? <Zap className="w-4 h-4" /> : <ShieldCheck className="w-4 h-4" />}
                 </div>
                 <h4 className="text-white font-mono text-xs font-bold tracking-wide mb-1.5">
                   {pillar.title}
                 </h4>
-                <p className="text-slate-400 text-xs leading-relaxed">
+                <p className="text-slate-400 text-xs leading-relaxed font-sans">
                   {pillar.description}
                 </p>
               </div>
@@ -155,7 +156,7 @@ export default function ChapterFoundation() {
               <img
                 src={PORTFOLIO_DATA.profile.workstationPhoto}
                 alt="Sooriya Moorthy at Workstation"
-                className="w-full h-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover filter contrast-110 group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#040813] via-transparent to-transparent opacity-80" />
 
@@ -164,11 +165,11 @@ export default function ChapterFoundation() {
 
               {/* Overlay HUD Tags */}
               <div className="absolute top-3 left-3 px-2 py-1 bg-black/70 backdrop-blur-md rounded border border-cyan-500/40 text-[10px] font-mono text-cyan-300">
-                SUBJECT: SOORIYA MOORTHY
+                ENGINEER: SOORIYA MOORTHY
               </div>
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md p-2 rounded border border-slate-800">
                 <span className="truncate pr-1">VELLORE INST. OF TECHNOLOGY</span>
-                <span className="text-cyan-400 shrink-0">STATUS: VERIFIED</span>
+                <span className="text-cyan-400 shrink-0">STATUS: ACTIVE SDE</span>
               </div>
             </div>
           </div>
@@ -206,7 +207,7 @@ export default function ChapterFoundation() {
                 Integrated M.Tech Software Engineering
               </div>
               <div className="text-[11px] text-slate-400">
-                Vellore Institute of Technology • 2021 - 2026
+                Vellore Institute of Technology • 2021 - 2026 • 8.27 CGPA
               </div>
             </div>
           </div>

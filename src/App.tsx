@@ -1,9 +1,11 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import CyberWitchIntro from './components/CyberWitchIntro';
 import VisitingCardHero from './components/VisitingCardHero';
 import ChapterFoundation from './components/ChapterFoundation';
 import ChapterArsenal from './components/ChapterArsenal';
+import ChapterPersonal from './components/ChapterPersonal';
+import QuoteSection from './components/QuoteSection';
 import InteractiveTerminal from './components/InteractiveTerminal';
 import ChapterArtifacts from './components/ChapterArtifacts';
 import ChapterContact from './components/ChapterContact';
@@ -73,11 +75,17 @@ export default function App() {
           {/* Chapter 2: The Arsenal - The Interactive Constellation */}
           <ChapterArsenal />
 
+          {/* Chapter 2: Campus Achievements - Personal Chapter */}
+          <ChapterPersonal />
+
           {/* Interactive Architecture Terminal Console (Placed directly above Projects) */}
           <InteractiveTerminal />
 
           {/* Chapter 3: The Artifacts - The Production Projects Space */}
           <ChapterArtifacts />
+
+          {/* Quote Section: Above Footer */}
+          <QuoteSection />
 
           {/* Chapter 4: Transmission Uplink - Direct Comms & Contact */}
           <ChapterContact
@@ -99,3 +107,4 @@ export default function App() {
     </ThemeProvider>
   );
 }
+
